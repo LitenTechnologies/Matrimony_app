@@ -1,0 +1,32 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "bright-weddings",
+          "appId": "1:749580264206:android:d43ae1c3ece3fedb1a2d5f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "bright-weddings",
+          "configurations": {
+            "android": "1:749580264206:android:d43ae1c3ece3fedb1a2d5f",
+            "ios": "1:749580264206:ios:0b49dc9e484eb6591a2d5f",
+            "web": "1:749580264206:web:3f3124594cc0b17c1a2d5f",
+            "windows": "1:749580264206:web:959a8368d124cc4c1a2d5f"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

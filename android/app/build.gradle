@@ -1,0 +1,54 @@
+plugins {
+    id "com.android.application"
+    id 'com.google.gms.google-services'
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    
+}
+
+android {
+    namespace = "com.example.bright_weddings"
+    compileSdk = 34
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        applicationId = "com.example.bright_weddings"
+        minSdk = 30
+        targetSdk = 34
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug  // Replace with your own release signing config when needed
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+// Firebase and Google services dependencies
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')// Firebase BOM
+    implementation 'com.google.firebase:firebase-analytics'  
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
+    implementation 'com.google.firebase:firebase-firestore:24.2.0'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    
+}
+
+// Apply the Google services plugin (must be at the bottom of the file)
+apply plugin: 'com.google.gms.google-services'

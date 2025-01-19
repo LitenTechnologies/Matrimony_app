@@ -1,12 +1,9 @@
-import 'package:bright_weddings/Helper/size_config.dart';
-import 'package:bright_weddings/View/Login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Helper/colors.dart';
-import '../../View/Dashboard/dashboard.dart';
-import '../../View/New Client Registration/new_client_registration.dart';
+import 'package:bright_weddings/View/Login/login.dart';
+import 'package:bright_weddings/View/New Client Registration/new_client_registration.dart';
+import 'package:bright_weddings/View/Dashboard/dashboard.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onNext;
@@ -14,229 +11,168 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   final bool? showDashboard;
   final bool? showLogin;
   final bool? showRegistration;
-  Header(
-      {Key? key,
-      this.onNext,
-      this.onBack,
-      this.showDashboard,
-      this.showLogin,
-      this.showRegistration})
-      : super(key: key);
+
+  Header({
+    Key? key,
+    this.onNext,
+    this.onBack,
+    this.showDashboard,
+    this.showLogin,
+    this.showRegistration,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
-    return Container(
-      height: 6.0.h, // Using SizeConfig for height
-      width: screenWidth,
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.25),
-          offset: Offset(0, 4.0),
-          blurRadius: 4.0,
-        )
-      ]),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            height: 2.2.h,
-            width: screenWidth,
-            color: headerTitleColor,
-            child: Builder(builder: (rowContext) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        height: 80.0,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: Offset(0, 4.0),
+              blurRadius: 4.0,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Left Section
+            Expanded(
+              flex: 2,
+              child: Row(
                 children: [
-                  onBack != null
-                      ? IconButton(
-                          onPressed: onBack,
-                          icon: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: Colors.white,
-                            size: 0.9.t,
-                          ))
-                      : Container(),
-                  onNext != null
-                      ? IconButton(
-                          onPressed: onNext,
-                          icon: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: Colors.white,
-                            size: 0.9.t,
-                          ))
-                      : Container(),
-                  Container(
-                    width: 1.0,
-                    color: Colors.white,
-                    height: MediaQuery.of(rowContext).size.height,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "ABOUT",
-                        style: GoogleFonts.inter(
-                            fontSize: 11,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
-                      )),
-                  Container(
-                    width: 1.0,
-                    color: Colors.white,
-                    height: MediaQuery.of(rowContext).size.height,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "FAQ",
-                        style: GoogleFonts.inter(
-                            fontSize: 11,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
-                      )),
-                  Container(
-                    width: 1.0,
-                    color: Colors.white,
-                    height: MediaQuery.of(rowContext).size.height,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "CONTACT",
-                        style: GoogleFonts.inter(
-                            fontSize: 11,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
-                      )),
-                  SizedBox(
-                    width: 70.0.w,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "+91 1234567890",
-                        style: GoogleFonts.inter(
-                            fontSize: 11,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
-                      )),
-                  Container(
-                    width: 1.0,
-                    color: Colors.white,
-                    height: MediaQuery.of(rowContext).size.height,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "IT.TEAM.INSTAICT@GMAIL.COM",
-                        style: GoogleFonts.inter(
-                            fontSize: 11,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
-                      )),
-                ],
-              );
-            }),
-          ),
-          Container(
-            height: 3.8.h,
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: 2.5.w,
-                    backgroundColor: darkYellowColor,
-                    child: Icon(
-                      Icons.menu_rounded,
-                      color: Colors.white,
-                      size: 1.7.h,
+                  if (onBack != null)
+                    IconButton(
+                      onPressed: onBack,
+                      icon: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
+                  if (onNext != null)
+                    IconButton(
+                      onPressed: onNext,
+                      icon: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
+                  Expanded(
+                    child: Text(
+                      "BRIGHT WEDDINGS",
+                      style: GoogleFonts.poppins(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 1.35.h,
-                ),
-                Text(
-                  "BRIGHT ",
-                  style: GoogleFonts.poppins(
-                      fontSize: 0.8.t,
-                      color: headerTitleColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "WEDDINGS",
-                  style: GoogleFonts.poppins(
-                      fontSize: 0.8.t,
-                      color: otherTextColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 90.0.w,
-                ),
-                showLogin == false
-                    ? Container()
-                    : TextButton(
+                ],
+              ),
+            ),
+
+            // Right Section
+            Expanded(
+              flex: 3,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (showLogin ?? true)
+                      _buildStyledButton(
+                        text: 'Logout',
                         onPressed: () {
                           Get.offAll(() => LoginPage());
                         },
-                        child: Text('Logout')),
-                showRegistration == false
-                    ? Container()
-                    : TextButton(
+                        startColor: Colors.redAccent,
+                        endColor: Colors.deepOrangeAccent,
+                        icon: Icons.exit_to_app,
+                      ),
+                    if (showRegistration ?? true)
+                      _buildStyledButton(
+                        text: 'Register',
                         onPressed: () {
                           Get.to(() => NewClientRegistration());
                         },
-                        child: Text('Register')),
-                showDashboard == false
-                    ? Container()
-                    : TextButton(
-                    onPressed: () {
-                      Get.to(() => Dashboard());
-                    },
-                    child: Text('Dashboard')),
-                SizedBox(
-                  width: 10.0.w,
-                ),
-                CircleAvatar(
-                  radius: 1.4.h,
-                  backgroundColor: Color(0xFFEEB2B1),
-                ),
-                SizedBox(
-                  width: 1.8.w,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "ADVISOR",
-                      style: GoogleFonts.inter(
-                          color: Color(0xFF002379), fontSize: 0.7.t),
-                    ),
-                    Text(
-                      "Ashley emyy",
-                      style: GoogleFonts.inter(
-                          color: headerTitleColor, fontSize: 1.0.t),
-                    ),
+                        startColor: Colors.greenAccent,
+                        endColor: Colors.lightGreen,
+                        icon: Icons.person_add,
+                      ),
+                    if (showDashboard ?? true)
+                      _buildStyledButton(
+                        text: 'Dashboard',
+                        onPressed: () {
+                          Get.to(() => Dashboard());
+                        },
+                        startColor: Colors.blueAccent,
+                        endColor: Colors.lightBlue,
+                        icon: Icons.dashboard,
+                      ),
                   ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStyledButton({
+    required String text,
+    required VoidCallback onPressed,
+    required Color startColor,
+    required Color endColor,
+    required IconData icon,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [startColor, endColor],
+            ),
+            borderRadius: BorderRadius.circular(30.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 12.0,
+                offset: Offset(4, 4), 
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0), // Reduced vertical padding
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, color: Colors.white, size: 20.0),
+                SizedBox(width: 8.0),
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(6.0.h);
+  Size get preferredSize => Size.fromHeight(50.0);
 }

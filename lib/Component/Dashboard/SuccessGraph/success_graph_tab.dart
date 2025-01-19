@@ -1,4 +1,4 @@
-import 'package:bright_weddings/Helper/size_config.dart';
+
 import 'package:flutter/material.dart';
 
 class SuccessGraphTab extends StatelessWidget {
